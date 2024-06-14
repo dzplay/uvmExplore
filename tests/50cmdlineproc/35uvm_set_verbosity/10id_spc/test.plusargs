@@ -1,0 +1,5 @@
++UVM_VERBOSITY=UVM_MEDIUM
++uvm_set_verbosity=uvm_test_top,A,UVM_FULL,connect
++uvm_set_verbosity=uvm_test_top,B,UVM_NONE,time,200
++uvm_set_verbosity=uvm_test_top,A,UVM_NONE,extract
++uvm_set_verbosity=uvm_test_top,B,UVM_MEDIUM,check
