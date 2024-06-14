@@ -54,11 +54,13 @@ USAGE
    exit(1);
 }
 
-require "getopts.pl";
+# require "getopts.pl";
+use Getopt::Std;
 use Cwd 'abs_path'; 
 use File::Spec::Functions qw(catfile path);
 
-&Getopts("0cC:dDf:F:PhR:Su:M:v");
+# &Getopts("0cC:dDf:F:PhR:Su:M:v");
+&getopts("0cC:dDf:F:PhR:Su:M:v");
 &usage if $opt_h || $#ARGV < 0;
 
 $tool = shift(@ARGV);
