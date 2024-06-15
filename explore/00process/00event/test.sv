@@ -54,37 +54,35 @@ class car_event;
 endclass
 
 class test extends uvm_test;
-   car_event car;
-   `uvm_component_utils(test)
+    car_event car;
+    `uvm_component_utils(test)
 
-   function new(string name, uvm_component parent = null);
-      super.new(name, parent);
-      car = new();
-   endfunction
+    function new(string name, uvm_component parent = null);
+        super.new(name, parent);
+        car = new();
+    endfunction
 
-   virtual task run_phase(uvm_phase phase);
-      // Set a drain time on the objection if needed
-      phase.raise_objection(this); // 不加这玩意则0 ns直接结束，不消耗仿真时间；原因待分析 [TODO]
-      `uvm_info("drive start", "Setting drain time of 10", UVM_NONE);
-
-      // Run a bunch of processes in parallel
-      car.drive(); 
-      `uvm_info("drive finish", "Setting drain time of 10", UVM_NONE);
-      // uvm_test_done.set_drain_time(this,10);
-      phase.drop_objection(this);
+//    virtual task run_phase(uvm_phase phase);
+    virtual task main_phase(uvm_phase phase);
+        phase.raise_objection(this); 
+        // 不加raise_objection则0 ns直接结束，不消耗仿真时间；原因待分析 [Done]
+        `uvm_info("raise_objection start", "car.drive begin...", UVM_NONE);
+        car.drive(); 
+        `uvm_info("raise_objection finish", "car.drive stop...", UVM_NONE);
+        phase.drop_objection(this);
 
     endtask
 
-   virtual function void report();
-      $write("** UVM TEST PASSED **\n");
-   endfunction
+    virtual function void report();
+        $write("** UVM TEST PASSED **\n");
+    endfunction
 endclass
 
 
 
 initial
-  begin
-     run_test();
-  end
+    begin
+        run_test();
+    end
 
 endprogram
