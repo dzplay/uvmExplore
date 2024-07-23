@@ -1,0 +1,52 @@
+Command: /home/dzplay/work/uvmExplore/explore/01paramClass/./simv -l simv.log +UVM_TESTNAME=test
+Chronologic VCS simulator copyright 1991-2018
+Contains Synopsys proprietary information.
+Compiler version O-2018.09-SP2_Full64; Runtime version O-2018.09-SP2_Full64;  Jun 21 20:46 2024
+----------------------------------------------------------------
+UVM-1.1b
+(C) 2007-2012 Mentor Graphics Corporation
+(C) 2007-2012 Cadence Design Systems, Inc.
+(C) 2006-2012 Synopsys, Inc.
+(C) 2011-2012 Cypress Semiconductor Corp.
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test test...
+UVM_INFO test.sv(133) @ 0: uvm_test_top [raise_objection start] car.drive begin...
+UVM_INFO test.sv(58) @ 0: reporter [] The lion, Mustafa, says Roar
+UVM_INFO test.sv(175) @ 0: uvm_test_top [] -- Lions --
+UVM_INFO test.sv(115) @ 0: reporter [] Animals in cage:
+UVM_INFO test.sv(117) @ 0: reporter [] Mustafa
+UVM_INFO test.sv(117) @ 0: reporter [] Simba
+UVM_INFO test.sv(177) @ 0: uvm_test_top [] -- Chickens --
+UVM_INFO test.sv(115) @ 0: reporter [] Animals in cage:
+UVM_INFO test.sv(117) @ 0: reporter [] Clucker
+UVM_INFO test.sv(117) @ 0: reporter [] Boomer
+UVM_INFO test.sv(135) @ 0: uvm_test_top [raise_objection finish] car.drive stop...
+** UVM TEST PASSED **
+
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   12
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[]     9
+[RNTST]     1
+[raise_objection finish]     1
+[raise_objection start]     1
+$finish called from file "/home/dzplay/work/uvmExplore/distrib/src/base/uvm_root.svh", line 408.
+$finish at simulation time                    0
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 0 ns
+CPU Time:      0.300 seconds;       Data structure size:   0.3Mb
+Fri Jun 21 20:46:40 2024

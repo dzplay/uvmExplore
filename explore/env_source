@@ -1,1 +1,2 @@
 export PATH="../admin/bin":$PATH
+export SIM_ROOT=".."
