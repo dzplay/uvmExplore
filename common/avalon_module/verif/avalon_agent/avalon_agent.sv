@@ -19,7 +19,7 @@ class avalon_agent extends uvm_agent;
    avalon_driver    drv;
    avalon_monitor   mon;
 
-   avalon_vif       vif;
+   virtual  avalon_if       vif;
 
    `uvm_component_utils_begin(avalon_agent)
       `uvm_field_object(sqr, UVM_ALL_ON)
@@ -36,7 +36,7 @@ class avalon_agent extends uvm_agent;
       drv = avalon_driver::type_id::create("drv", this);
       mon = avalon_monitor::type_id::create("mon", this);
       
-      if (!uvm_config_db#(avalon_vif)::get(this, "", "vif", vif)) begin
+      if (!uvm_config_db#(virtual  avalon_if)::get(this, "", "vif", vif)) begin
          `uvm_fatal("AVALON/AGT/NOVIF", "No virtual interface specified for this agent instance")
       end
    endfunction: build_phase

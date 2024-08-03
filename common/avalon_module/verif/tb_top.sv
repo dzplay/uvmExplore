@@ -13,35 +13,39 @@ module tb_top;
    // import tb_env_pkg::*;
    `include  "test_base.sv"
 
+   bit clk = 0;
+   bit rst = 1;
 
    // instance
-   avalon_if  m_vif();
+   avalon_if  m_intf(clk, rst);
    burst_read_master dut(
-      .clk                     (m_vif.clk                    ),// input 
-      .reset                   (m_vif.reset                  ),// input 
-      .control_fixed_location  (m_vif.control_fixed_location ),// input 
-      .control_read_base       (m_vif.control_read_base      ),// input 
-      .control_read_length     (m_vif.control_read_length    ),// input 
-      .control_go              (m_vif.control_go             ),// input 
-      .control_done            (m_vif.control_done           ),// output
-      .control_early_done      (m_vif.control_early_done     ),// output
-      .user_read_buffer        (m_vif.user_read_buffer       ),// input 
-      .user_buffer_data        (m_vif.user_buffer_data       ),// output
-      .user_data_available     (m_vif.user_data_available    ),// output
-      .master_waitrequest      (m_vif.master_waitrequest     ),// input 
-      .master_readdatavalid    (m_vif.master_readdatavalid   ),// input 
-      .master_readdata         (m_vif.master_readdata        ),// input 
-      .master_address          (m_vif.master_address         ),// output
-      .master_read             (m_vif.master_read            ),// output
-      .master_byteenable       (m_vif.master_byteenable      ),// output
-      .master_burstcount       (m_vif.master_burstcount      ) // output
+      .clk                     (clk                           ),// input 
+      .reset                   (rst                           ),// input 
+      .control_fixed_location  (m_intf.control_fixed_location ),// input 
+      .control_read_base       (m_intf.control_read_base      ),// input 
+      .control_read_length     (m_intf.control_read_length    ),// input 
+      .control_go              (m_intf.control_go             ),// input 
+      .control_done            (m_intf.control_done           ),// output
+      .control_early_done      (m_intf.control_early_done     ),// output
+      .user_read_buffer        (m_intf.user_read_buffer       ),// input 
+      .user_buffer_data        (m_intf.user_buffer_data       ),// output
+      .user_data_available     (m_intf.user_data_available    ),// output
+      .master_waitrequest      (m_intf.master_waitrequest     ),// input 
+      .master_readdatavalid    (m_intf.master_readdatavalid   ),// input 
+      .master_readdata         (m_intf.master_readdata        ),// input 
+      .master_address          (m_intf.master_address         ),// output
+      .master_read             (m_intf.master_read            ),// output
+      .master_byteenable       (m_intf.master_byteenable      ),// output
+      .master_burstcount       (m_intf.master_burstcount      ) // output
    );
 
-   // initial
-   // begin
-   //    // null, "",:-用于在全局配置表.
-   //    uvm_config_db#(avalon_if)::set(null, "", "m_vif", m_vif);
-   // end
+   // inf & reset
+   initial
+   begin
+      // null, "",:-用于在全局配置表.
+      uvm_config_db#(virtual  avalon_if)::set(null, "*", "vif", m_intf);
+      #100 rst = 0;
+   end
 
    // run test
    initial
@@ -51,7 +55,9 @@ module tb_top;
    end
 
    // clk
-   always #10 m_vif.clk = ~m_vif.clk;
+   always #10 force m_intf.clk = ~m_intf.clk;
+
+
 
 endmodule: tb_top
 // endprogram: tb_top

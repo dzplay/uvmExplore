@@ -16,8 +16,6 @@ package avalon_pkg;
 
   import uvm_pkg::*;
 
-  typedef virtual avalon_if avalon_vif;
-
   // typedef class avalon_sequence_base;
   typedef class avalon_agent;
 

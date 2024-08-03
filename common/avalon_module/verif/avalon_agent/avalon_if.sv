@@ -23,7 +23,7 @@ interface avalon_if#(
     parameter FIFODEPTH = 32,
     parameter FIFODEPTH_LOG2 = `FIFODEPTH_LOG2_DEF,
     parameter FIFOUSEMEMORY = 1  // set to 0 to use LEs instead
-);
+) (input bit clk, input bit reset);
    // wire [31:0] paddr;
    // wire        psel;
    // wire        penable;
@@ -32,8 +32,8 @@ interface avalon_if#(
    // wire [31:0] pwdata;
 
 
-   logic    clk;                                                // input 
-   logic    reset;                                              // input 
+//    logic    clk;                                                // input 
+//    logic    reset;                                              // input 
 
    // control inputs and outputs
    logic  control_fixed_location;                               // input 
@@ -65,7 +65,7 @@ interface avalon_if#(
    clocking mck @(posedge clk);
 		input   control_done, control_early_done, user_buffer_data, user_data_available, 
 				master_address, master_read, master_byteenable, master_burstcount;
-		output  clk, reset, control_fixed_location, control_read_base, control_read_length, control_go, 
+		output  control_fixed_location, control_read_base, control_read_length, control_go, 
 				user_read_buffer, master_waitrequest, master_readdatavalid, master_readdata;
     //   sequence at_posedge;
     //      1;
@@ -73,7 +73,7 @@ interface avalon_if#(
    endclocking: mck
 
    clocking sck @(posedge clk);
-		output  clk, reset, control_done, control_early_done, user_buffer_data, user_data_available, 
+		output  control_done, control_early_done, user_buffer_data, user_data_available, 
 				master_address, master_read, master_byteenable, master_burstcount;
 		input   control_fixed_location, control_read_base, control_read_length, control_go, 
 				user_read_buffer, master_waitrequest, master_readdatavalid, master_readdata;
@@ -84,7 +84,6 @@ interface avalon_if#(
    endclocking: sck
 
    clocking pck @(posedge clk);
-        input   clk, reset;
 		input   control_done, control_early_done, user_buffer_data, user_data_available, 
 				master_address, master_read, master_byteenable, master_burstcount;
 		input   control_fixed_location, control_read_base, control_read_length, control_go, 

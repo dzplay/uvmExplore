@@ -39,7 +39,7 @@ class avalon_monitor extends uvm_monitor;
       end
       else begin
          virtual avalon_if tmp;
-         if (!uvm_config_db#(avalon_vif)::get(this, "", "vif", tmp)) begin
+         if (!uvm_config_db#(virtual  avalon_if)::get(this, "", "vif", tmp)) begin
             `uvm_fatal("AVALON/MON/NOVIF", "No virtual interface specified for this monitor instance")
          end
          vif = tmp;

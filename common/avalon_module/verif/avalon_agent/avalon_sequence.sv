@@ -27,12 +27,14 @@ class avalon_sequence_base extends uvm_sequence #(avalon_sequence_item);
 		// 		starting_phase.get_name()), UVM_MEDIUM);
 		// starting_phase.drop_objection(this);
 		// end
-    `uvm_info(get_type_name(), $sformatf("avalon_sequence_base starting ..."), UVM_LOW);
+		int seq_timer = 200;
+    	`uvm_info(get_type_name(), $sformatf("avalon_sequence_base starting ..."), UVM_LOW);
 		if (m_seq_item!=null) begin
 			m_seq_item = new();
 			m_seq_item.randomize();
 		end
 		`uvm_send(m_seq_item);
+		# seq_timer;
 	endtask
 
 endclass : avalon_sequence_base

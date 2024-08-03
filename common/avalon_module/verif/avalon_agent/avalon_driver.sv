@@ -21,7 +21,7 @@ class avalon_driver extends uvm_driver#(avalon_sequence_item);
     `uvm_component_utils(avalon_driver)
   
 	// event trig;
-	avalon_vif vif;
+	virtual  avalon_if vif;
 	avalon_config m_cfg_h;
 
 	function new(string name,uvm_component parent = null);
@@ -34,7 +34,7 @@ class avalon_driver extends uvm_driver#(avalon_sequence_item);
 		//    vif = agent.vif;
 		// end
 		// else begin
-		if (!uvm_config_db#(avalon_vif)::get(this, "", "vif", vif)) begin
+		if (!uvm_config_db#(virtual  avalon_if)::get(this, "", "vif", vif)) begin
 			`uvm_fatal("AVALON/DRV/NOVIF", "No virtual interface specified for this driver instance")
 		end
 		// end
@@ -64,7 +64,7 @@ class avalon_driver extends uvm_driver#(avalon_sequence_item);
         //  this.trans_executed(tr);
         //  `uvm_do_callbacks(avalon_driver,avalon_driver_cbs,trans_executed(this,tr))
 
-        //  seq_item_port.item_done();
+         	seq_item_port.item_done();
 		// ->trig ;
 		end
 	endtask: run_phase
@@ -108,7 +108,8 @@ task avalon_driver::reset_proc();
     int wordburstcount = 16;
     int address;
     address = 10*wordburstcount; 
-	vif.reset                  <= 1;
+	// @negedge(vif.reset);
+	// vif.reset                  <= 1;
 	vif.user_read_buffer       <= 0;
 	vif.control_read_base      <= 0;
 	vif.control_read_length    <= 0;
@@ -116,7 +117,7 @@ task avalon_driver::reset_proc();
 	vif.control_go             <= 0;
 	vif.master_waitrequest     <= 0;
 	repeat (20) @(vif.clk);
-	vif.reset                  <= 0;
+	// vif.reset                  <= 0;
 endtask: reset_proc
 
 `endif
