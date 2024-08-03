@@ -1,2 +1,2 @@
 export PATH="../admin/bin":$PATH
-export SIM_ROOT=".."
+export SIM_ROOT=$(dirname "$PWD")
