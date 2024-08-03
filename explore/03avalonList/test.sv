@@ -1,23 +1,22 @@
-// 
+// filelist version 1.0
 // -------------------------------------------------------------
-//    Copyright 2011 Synopsys, Inc.
-//    All Rights Reserved Worldwide
-// 
-//    Licensed under the Apache License, Version 2.0 (the
-//    "License"); you may not use this file except in
-//    compliance with the License.  You may obtain a copy of
-//    the License at
-// 
-//        http://www.apache.org/licenses/LICENSE-2.0
-// 
-//    Unless required by applicable law or agreed to in
-//    writing, software distributed under the License is
-//    distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-//    CONDITIONS OF ANY KIND, either express or implied.  See
-//    the License for the specific language governing
-//    permissions and limitations under the License.
+// $SIM_ROOT/common/avalon_module/src/burst_read_master.v
+// +incdir+$SIM_ROOT/common/avalon_module/verif/avalon_agent
+// $SIM_ROOT/common/avalon_module/verif/avalon_agent/avalon_if.sv
+// $SIM_ROOT/common/avalon_module/verif/avalon_agent/avalon_pkg.svh
+// +incdir+$SIM_ROOT/common/avalon_module/verif/env
+// $SIM_ROOT/common/avalon_module/verif/env/tb_env_pkg.svh
+// +incdir+$SIM_ROOT/common/avalon_module/verif/tests
+// $SIM_ROOT/common/avalon_module/verif/tests/test_base.sv
+// +incdir+$SIM_ROOT/common/avalon_module/verif
+// $SIM_ROOT/common/avalon_module/verif/tb_top.sv
+// -fsdb
 // -------------------------------------------------------------
-// 
+// filelist version 2.0
+// -------------------------------------------------------------
+// -f $SIM_ROOT/common/avalon_module/verif/tb_top.f
+// -fsdb
+// -------------------------------------------------------------
 
 `undef EXPLICIT_MON
 `include "tb_top.sv"
