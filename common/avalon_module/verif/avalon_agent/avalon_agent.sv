@@ -39,6 +39,8 @@ class avalon_agent extends uvm_agent;
       if (!uvm_config_db#(virtual  avalon_if)::get(this, "", "vif", vif)) begin
          `uvm_fatal("AVALON/AGT/NOVIF", "No virtual interface specified for this agent instance")
       end
+	   uvm_config_db#(virtual  avalon_if)::set(this, "*", "vif", vif);
+
    endfunction: build_phase
 
    virtual function void connect_phase(uvm_phase phase);
