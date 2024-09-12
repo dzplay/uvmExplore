@@ -14,4 +14,5 @@ $SIM_ROOT/common/avalon_module/src/burst_read_master.v
 $SIM_ROOT/common/avalon_module/verif/tests/test_base.sv
 // top
 +incdir+$SIM_ROOT/common/avalon_module/verif
+$SIM_ROOT/common/avalon_module/verif/avalon_if_connection.sv
 $SIM_ROOT/common/avalon_module/verif/tb_top.sv

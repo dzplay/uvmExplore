@@ -57,7 +57,8 @@ module tb_top;
 
    // clk & rst
    // always #10 force clk = ~clk; // 不会起作用到dut.clk, need find out
-   always #10ns force dut.clk = ~dut.clk;
+   // always #10ns force dut.clk = ~dut.clk;
+   always #10 clk = ~clk; // 不会起作用到dut.clk, need find out
 
    initial
    begin
