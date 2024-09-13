@@ -36,9 +36,14 @@ typedef  bit  [7:0]  ByteList [$];
 
 virtual class Bits2Bytes #(parameter bit_width=32);
     // static function automatic ByteList pack_data( bit [bit_width-1:0] data_in);
-    static function automatic bit  [7:0] [$] pack_data( bit [bit_width-1:0] data_in, bit MSB=0);
+    static function automatic bit  [7:0] [$] pack_data( bit [bit_width-1:0] data_in, bit msb=0);
         bit  [7:0]  data_out [$];
-        data_out = {8 << (data_in)};
+        if (msb) begin
+            data_out = {<<8{data_in}};
+        end
+        else begin
+            data_out = {>>8{data_in}};
+        end
 		`uvm_info("", $sformatf("data_in bit width: %d", $bits(data_in)), UVM_LOW);
         foreach(data_out[i]) begin
     		`uvm_info("", $sformatf("data_out[%d] bit width: %d", i, data_out[i]), UVM_LOW);
