@@ -8,7 +8,7 @@
 `ifndef TB_ENV__SV
 `define TB_ENV__SV
 import uvm_pkg::*;
-import avalon_pkg::*;
+// import avalon_pkg::*;
 
 // typedef class avalon_agent;
 // `include "avalon_sequence_base.sv"

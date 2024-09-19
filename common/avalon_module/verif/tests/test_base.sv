@@ -17,7 +17,9 @@
 // endclass
 // import tb_env_pkg::*;
 
-// import tb_env_pkg::*; // 
+import tb_env_pkg::*; // 
+import libs_pkg::*;
+import uvm_pkg::*;
 
 class test extends uvm_test;
 
@@ -41,7 +43,7 @@ class test extends uvm_test;
 
    virtual task main_phase(uvm_phase phase);
       phase.raise_objection(this);
-
+      main_proc();
       phase.drop_objection(this);
    endtask: main_phase
 
@@ -55,5 +57,14 @@ class test extends uvm_test;
       else
          $write("!! UVM TEST FAILED !!\n");
    endfunction
+
+   virtual task main_proc();
+      KeyValue #(int) kv;
+      KeyValue #(bit) kv_bit;
+      kv = new("cat");
+      kv_bit = new("dog");
+      kv.self_test();
+      kv_bit.self_test();
+   endtask: main_proc
 
 endclass

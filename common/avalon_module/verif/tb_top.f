@@ -7,6 +7,8 @@ $SIM_ROOT/common/avalon_module/src/burst_read_master.v
 
 // env
 // +incdir+$SIM_ROOT/common/avalon_module/verif/env
+-f $SIM_ROOT/common/libs/libs.f
+
 -f $SIM_ROOT/common/avalon_module/verif/env/tb_env.f
 
 // tests
