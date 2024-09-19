@@ -1,8 +1,8 @@
 `ifndef TB_TOP__SV
 `define TB_TOP__SV
 
-// `include  "avalon_pkg.svh"
-// `include  "tb_env.sv"
+`include  "avalon_pkg.svh"
+`include  "tb_env.sv"
 
 module tb_top;
 // program tb_top;
