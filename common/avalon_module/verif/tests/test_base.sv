@@ -59,12 +59,9 @@ class test extends uvm_test;
    endfunction
 
    virtual task main_proc();
-      KeyValue #(int) kv;
-      KeyValue #(bit) kv_bit;
+      BitMap #(32) kv;
       kv = new("cat");
-      kv_bit = new("dog");
       kv.self_test();
-      kv_bit.self_test();
    endtask: main_proc
 
 endclass
