@@ -17,6 +17,7 @@
 // endclass
 // import tb_env_pkg::*;
 
+import tb_env_pkg::*; // 
 
 class test extends uvm_test;
 

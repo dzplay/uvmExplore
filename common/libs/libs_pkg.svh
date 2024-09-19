@@ -6,14 +6,15 @@
 // MD5: 8d45881764a4ef2cea131d4e17c03743
 //---------------------------------------------------------------------- 
 
-class avalon_config extends uvm_object;
+`ifndef LIBS_PKG_SV
+`define LIBS_PKG_SV
 
-   `uvm_object_utils(avalon_config)
-   virtual avalon_if vif;
+package libs_pkg;
+  import uvm_pkg::*;
 
-   function new(string name = "avalon_config");
-      super.new(name);
-   endfunction
-  
-endclass
+  `include "uvm_macros.svh"
+  `include "libs.sv"
 
+endpackage
+
+`endif
